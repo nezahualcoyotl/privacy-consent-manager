@@ -1,6 +1,7 @@
 sub init()
   m.container = m.top.findNode("container")
   m.title = m.top.findNode("title")
+  m.message = m.top.findNode("message")
   m.collectionConsent = m.top.findNode("collectionConsent")
   m.sharingConsent = m.top.findNode("sharingConsent")
   m.buttonGroup = m.top.findNode("buttonGroup")
@@ -24,6 +25,7 @@ sub setStyles()
 
   m.container.setFields(styles.container)
   m.title.setFields(styles.titleLabel)
+  m.message.setFields(styles.messageLabel)
   m.collectionConsent.setFields(styles.collectionConsent)
   m.sharingConsent.setFields(styles.sharingConsent)
   m.collectionConsent.itemData = styles.collectionConsent
@@ -57,6 +59,10 @@ sub initDataChanged(msg as dynamic)
   if m.consents["allow_data_sharing"]
     m.sharingConsent.selected = true
     m.allowSharing = true
+  end if
+
+  if m.configEnforced
+    m.message.text = "This settings are enforced by the state laws of " + locationData.name + "."
   end if
 end sub
 

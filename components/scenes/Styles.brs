@@ -264,7 +264,7 @@ function getConsentSceneStyles() as object
       layoutDirection: "vert",
       horizAlignment: "left",
       translation: [300, 150],
-      itemSpacings: [150, 30, 150]
+      itemSpacings: [150, 30, 50, 100]
     },
     titleLabel: {
       color: "0x404459FF",
@@ -272,6 +272,13 @@ function getConsentSceneStyles() as object
       horizAlign: "center",
       vertAlign: "center",
       text: "Privacy Consent Configuration"
+    },
+    messageLabel: {
+      color: "0x404459FF",
+      font: "font:MediumBoldSystemFont",
+      horizAlign: "center",
+      vertAlign: "center",
+      text: ""
     },
     saveButton: {
       backgroundUri: "pkg:/images/roundedRect.9.png",

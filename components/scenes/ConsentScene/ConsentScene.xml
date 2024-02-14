@@ -7,6 +7,7 @@
       <Label id="title" />
       <ConsentItem id="collectionConsent" />
       <ConsentItem id="sharingConsent" />
+      <Label id="message" />
       <LayoutGroup id="buttonGroup">
         <StaticButton id="saveButton"/>
         <StaticButton id="signOutButton"/>
