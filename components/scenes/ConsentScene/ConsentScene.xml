@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ConsentScene" extends="BaseScene">
+  <script type="text/brightscript" uri="ConsentScene.brs"/>
+
+  <children>
+    <LayoutGroup id="container" >
+      <Label id="title" />
+      <ConsentItem id="collectionConsent" />
+      <ConsentItem id="sharingConsent" />
+      <LayoutGroup id="buttonGroup">
+        <StaticButton id="saveButton"/>
+        <StaticButton id="signOutButton"/>
+      </LayoutGroup>
+    </LayoutGroup>
+  </children>
+</component>
