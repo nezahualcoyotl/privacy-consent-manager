@@ -126,6 +126,9 @@ sub onButtonSelected(msg as dynamic)
           userConfig: m.userConfig,
         }
       }
+      if not m.configEnforced
+        m.message.text = "Your settings have been saved."
+      end if
     else if selectedButton = "signOutButton"
       m.top.event = {
         type: "SIGN_OUT"
