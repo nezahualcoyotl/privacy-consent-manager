@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="FileWriterTask" extends="Task">
+  <interface>
+    <field id="result" type="assocarray" />
+    <field id="error" type="assocarray" />
+    <field id="data" type="assocarray" />
+  </interface>
+  <script type="text/brightscript" uri="FileWriterTask.brs" />
+  <script type="text/brightscript" uri="pkg:/source/utils/utils.brs" />
+</component>

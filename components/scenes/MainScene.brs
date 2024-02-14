@@ -40,7 +40,7 @@ end sub
 
 sub updateConsents(data as object)
 	if m.jsonParser = invalid
-		m.jsonParser = createObject("roSGNode", "LoginTask")
+		m.jsonParser = createObject("roSGNode", "FileWriterTask")
 		m.jsonParser.functionName = "updateConsents"
 		m.jsonParser.observeField("result", "onConsentsUpdated")
 		m.jsonParser.observeField("error", "onErrorResponse")
@@ -51,7 +51,7 @@ end sub
 
 sub saveUser(data as object)
 	if m.jsonParser = invalid
-		m.jsonParser = createObject("roSGNode", "LoginTask")
+		m.jsonParser = createObject("roSGNode", "FileWriterTask")
 		m.jsonParser.functionName = "saveUser"
 		m.jsonParser.observeField("result", "onSuccessResponse")
 		m.jsonParser.observeField("error", "onErrorResponse")
