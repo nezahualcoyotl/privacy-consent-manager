@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="WelcomeScene" extends="BaseScene">
+    <script type="text/brightscript" uri="WelcomeScene.brs"/>
+
+    <children>
+        <StaticButton id="signUpButton" />
+        <StaticButton id="signInButton" />
+    </children>
+</component>
