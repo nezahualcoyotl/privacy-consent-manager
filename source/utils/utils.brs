@@ -31,3 +31,10 @@ function GetRandomHexString(length as integer) as string
   next
   return hexString
 end function
+
+function getCurrentUserIndex(userBucket as object, userId as string) as integer
+  for i = 0 to userBucket.count() - 1
+    user = userBucket[i]
+    if user.id = userId then return i
+  end for
+end function
