@@ -8,5 +8,9 @@ end sub
 
 sub routingEventCallback(e)
 	event = e.getData()
-  print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> event " event 
+	if event.type = "SIGN_UP_BUTTON_SELECTED"
+		m.router.navigateToScene("SignUpScene")
+	else if event.type = "BACK"
+		m.router.navigateToPreviousScene()
+	end if
 end sub

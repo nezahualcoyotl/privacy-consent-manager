@@ -50,3 +50,16 @@ function onKeyEvent(key as string, press as boolean) as Boolean
   end if
   return handled
 end function
+
+sub onButtonSelected(msg as dynamic)
+  selectedButton = msg.getNode()
+  eventType = ""
+
+  if selectedButton = "signUpButton"
+    eventType = "SIGN_UP_BUTTON_SELECTED"
+  end if
+
+  m.top.event = {
+      type: eventType
+  }
+end sub

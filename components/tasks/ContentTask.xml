@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="ContentTask" extends="Task">
+    <interface>
+        <field id="result" type="assocarray" />
+        <field id="error" type="assocarray" />
+        <field id="jsonFilePath" type="string" />
+    </interface>
+    <script type="text/brightscript" uri="ContentTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/utils.brs" />
+</component>

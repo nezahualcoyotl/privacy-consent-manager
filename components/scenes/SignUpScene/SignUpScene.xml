@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SignUpScene" extends="BaseScene">
+    <script type="text/brightscript" uri="SignUpScene.brs"/>
+
+     <children>
+        <LayoutGroup id="container" >
+            <Label id="title" />
+            <Label id="emailLabel" />
+            <TextEditBox id="email" />
+            <Label id="passwordLabel" />
+            <TextEditBox id="password" />
+            <Label id="locationLabel" />
+            <Poster id="locationBackground" >
+                <Label id="stateLabel" />
+            </Poster>
+            <LayoutGroup id="buttonGroup">
+                <StaticButton id="saveButton"/>
+                <StaticButton id="cancelButton"/>
+            </LayoutGroup>
+        </LayoutGroup>
+
+        <Group id="statesContainer" visible="false" >
+            <LabelList id="statesList" />
+            <Label id="selectedStateLabel" />
+            <StaticButton id="saveStateButton"/>
+        </Group>
+
+        <Keyboard id="keyboard" backgroundColor="#22252C"/>
+    </children>
+</component>

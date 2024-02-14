@@ -1,0 +1,12 @@
+[
+  {
+    "id": "",
+    "email": "test@test.com",
+    "password": "aaaa",
+    "location": "FL",
+    "config": {
+      "allow_data_collection": true,
+      "allow_data_sharing": true
+    }
+  }
+]
