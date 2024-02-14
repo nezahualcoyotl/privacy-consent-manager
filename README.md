@@ -12,7 +12,7 @@ The primary goal of the Privacy Content Manager is to read and write on a json f
 
 ## Important Notes
 
-- The JSON file used for storing user configurations is temporary. It will be removed if the application is minimized since Instant Resume is not implemented. Therefore, user configurations and data will not persist between sessions.
+- The JSON file used for storing user configurations is temporary (because of how WriteAsciiFile works). It will be removed if the application is minimized since Instant Resume is not implemented. Therefore, user configurations and data will not persist between sessions.
 
 ## Known Issues and TODOs
 
