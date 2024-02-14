@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ConsentItem" extends="Group">
+  <script type="text/brightscript" uri="ConsentItem.brs" />
+
+  <interface>
+    <field id="itemData" type="assocarray" onChange="setupItem" alwaysNotify="true" />
+    <field id="text" type="string" />
+    <field id="selected" type="boolean" />
+    <function name="setItemText" />
+  </interface>
+
+  <children>
+    <Poster id="background" >
+      <LayoutGroup id="container">
+        <Poster id="icon"/>
+        <Label id="label" />
+      </LayoutGroup>
+    </Poster>
+  </children>
+</component>
