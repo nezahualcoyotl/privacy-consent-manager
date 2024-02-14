@@ -3,7 +3,7 @@ sub init()
 end sub
 
 sub loginUser()
-  fileContent = ReadAsciiFile(m.top.jsonFilePath)
+  fileContent = ReadAsciiFile("tmp:/usersConfig.json")
   jsonObject = ParseJson(fileContent)
   data = m.top.data
 
@@ -23,12 +23,13 @@ sub loginUser()
 end sub
 
 sub saveUser()
-  fileContent = ReadAsciiFile(m.top.jsonFilePath)
-  jsonObject = ParseJson(fileContent)
+  fileContent = ReadAsciiFile("tmp:/usersConfig.json")
+  usersBucket = ParseJson(fileContent)
+
   data = m.top.data
   date = createObject("roDateTime")
 
-  payload = checkSavedUser(jsonObject, data)
+  payload = checkSavedUser(usersBucket, data)
 
   if payload.isValidUser
     m.top.error = {
@@ -37,34 +38,67 @@ sub saveUser()
     }
   else
     stateData = data.location
-    locationCode = stateData.id
     configEnforced = stateData.configEnforced
+    stateConfig = {
+      name: stateData.title,
+      code: stateData.id,
+      configEnforced: configEnforced
+    }
 
     userConfig = {
       "id": GenerateGuid(),
       "email": data.email,
       "password": data.password,
-      "location": locationCode,
+      "locationData": stateConfig,
       "time": date.asSeconds(),
-      "config": {
+      "consents": {
         "allow_data_collection": configEnforced,
         "allow_data_sharing": configEnforced
       }
     }
-    m.top.getScene().event = userConfig
 
-    ' success = writeAsciiFile(m.top.jsonFilePath, formatJson(userConfig))
+    if usersBucket = invalid
+      usersBucket = []
+    end if
 
-    ' stop
-    ' if success
-    '     m.top.result = {
-    '         success: true,
-    '     }
-    ' else
-    '     m.top.error = {
-    '         error: true,
-    '         details: "Somenthing wrong happened. Try again."
-    '     }
-    ' end if
+    usersBucket.push(userConfig)
+    success = WriteAsciiFile("tmp:/usersConfig.json", formatJson(usersBucket))
+
+    if success
+      m.top.result = {
+        success: true,
+        userConfig: userConfig
+      }
+    else
+      m.top.error = {
+        error: true,
+        details: "Somenthing wrong happened. Try again."
+      }
+    end if
+  end if
+end sub
+
+sub updateConsents()
+  fileContent = ReadAsciiFile("tmp:/usersConfig.json")
+  usersBucket = ParseJson(fileContent)
+
+  data = m.top.data
+  date = createObject("roDateTime")
+  data.time = date.asSeconds()
+
+  userIndex = getCurrentUserIndex(usersBucket, data.id)
+  usersBucket[userIndex] = data
+
+  success = WriteAsciiFile("tmp:/usersConfig.json", formatJson(usersBucket))
+
+  if success
+    m.top.result = {
+      success: true
+    }
+  else
+    m.top.error = {
+      error: true,
+      details: "Somenthing wrong happened. Try again."
+    }
   end if
 end sub

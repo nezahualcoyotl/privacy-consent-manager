@@ -125,18 +125,21 @@ end sub
 
 sub onButtonSelected(msg as dynamic)
   selectedButton = msg.getNode()
+  isButtonSelected = msg.getData()
 
-  if selectedButton = "confirmButton"
-    m.top.event = {
-      type: "SIGN_IN",
-      data: {
-        email: m.email.text,
-        password: m.password.text
+  if isButtonSelected
+    if selectedButton = "confirmButton"
+      m.top.event = {
+        type: "SIGN_IN",
+        data: {
+          email: m.email.text,
+          password: m.password.text
+        }
       }
-    }
-  else if selectedButton = "cancelButton"
-    m.top.event = {
-      type: "BACK"
-    }
+    else if selectedButton = "cancelButton"
+      m.top.event = {
+        type: "BACK"
+      }
+    end if
   end if
 end sub

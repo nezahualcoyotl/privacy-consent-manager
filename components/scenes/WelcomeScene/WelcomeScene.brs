@@ -53,15 +53,18 @@ end function
 
 sub onButtonSelected(msg as dynamic)
   selectedButton = msg.getNode()
+  isButtonSelected = msg.getData()
   eventType = ""
 
-  if selectedButton = "signInButton"
-    eventType = "SIGN_IN_BUTTON_SELECTED"
-  else if selectedButton = "signUpButton"
-    eventType = "SIGN_UP_BUTTON_SELECTED"
-  end if
+  if isButtonSelected
+    if selectedButton = "signInButton"
+      eventType = "SIGN_IN_BUTTON_SELECTED"
+    else if selectedButton = "signUpButton"
+      eventType = "SIGN_UP_BUTTON_SELECTED"
+    end if
 
-  m.top.event = {
-    type: eventType
-  }
+    m.top.event = {
+      type: eventType
+    }
+  end if
 end sub

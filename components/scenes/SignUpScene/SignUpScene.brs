@@ -222,28 +222,31 @@ end sub
 
 sub onButtonSelected(msg as dynamic)
   selectedButton = msg.getNode()
+  isButtonSelected = msg.getData()
 
-  if selectedButton = "saveButton"
-    m.top.event = {
-      type: "SIGN_UP",
-      data: {
-        email: m.email.text,
-        password: m.password.text,
-        location: m.statesList.content.getChild(m.selectedIndex)
+  if isButtonSelected
+    if selectedButton = "saveButton"
+      m.top.event = {
+        type: "SIGN_UP",
+        data: {
+          email: m.email.text,
+          password: m.password.text,
+          location: m.statesList.content.getChild(m.selectedIndex)
+        }
       }
-    }
-  else if selectedButton = "cancelButton"
-    m.top.event = {
-      type: "BACK"
-    }
-  else if selectedButton = "saveStateButton"
-    stateSelected = m.statesList.content.getChild(m.selectedIndex)
-    m.stateLabel.text = Substitute("{0}  /  [ {1} ]", stateSelected.title, stateSelected.id)
+    else if selectedButton = "cancelButton"
+      m.top.event = {
+        type: "BACK"
+      }
+    else if selectedButton = "saveStateButton"
+      stateSelected = m.statesList.content.getChild(m.selectedIndex)
+      m.stateLabel.text = Substitute("{0}  /  [ {1} ]", stateSelected.title, stateSelected.id)
 
-    m.container.visible = true
-    m.statesContainer.visible = false
-    m.lastFocused = m.locationBackground
-    m.locationBackground.setFocus(true)
+      m.container.visible = true
+      m.statesContainer.visible = false
+      m.lastFocused = m.locationBackground
+      m.locationBackground.setFocus(true)
+    end if
   end if
 end sub
 

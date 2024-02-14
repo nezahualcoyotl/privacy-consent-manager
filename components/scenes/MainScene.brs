@@ -4,6 +4,8 @@ sub init()
 	m.router.initialize(m.scenes)
 	m.router.navigateToScene("WelcomeScene", {}, false)
 	m.background = m.top.findNode("background")
+
+	m.jsonParser = invalid
 end sub
 
 sub routingEventCallback(e)
@@ -16,6 +18,10 @@ sub routingEventCallback(e)
 		loginUser(event.data)
 	else if event.type = "SIGN_UP"
 		saveUser(event.data)
+	else if event.type = "UPDATE_CONSENTS"
+		updateConsents(event.data.userConfig)
+	else if event.type = "SIGN_OUT"
+		m.router.navigateToScene("WelcomeScene", {}, true)
 	else if event.type = "BACK"
 		m.router.navigateToPreviousScene()
 	end if
@@ -27,7 +33,17 @@ sub loginUser(data as object)
 		m.jsonParser.functionName = "loginUser"
 		m.jsonParser.observeField("result", "onSuccessResponse")
 		m.jsonParser.observeField("error", "onErrorResponse")
-		m.jsonParser.jsonFilePath = "pkg:/source/json/usersConfig.json"
+		m.jsonParser.data = data
+		m.jsonParser.control = "RUN"
+	end if
+end sub
+
+sub updateConsents(data as object)
+	if m.jsonParser = invalid
+		m.jsonParser = createObject("roSGNode", "LoginTask")
+		m.jsonParser.functionName = "updateConsents"
+		m.jsonParser.observeField("result", "onConsentsUpdated")
+		m.jsonParser.observeField("error", "onErrorResponse")
 		m.jsonParser.data = data
 		m.jsonParser.control = "RUN"
 	end if
@@ -39,7 +55,6 @@ sub saveUser(data as object)
 		m.jsonParser.functionName = "saveUser"
 		m.jsonParser.observeField("result", "onSuccessResponse")
 		m.jsonParser.observeField("error", "onErrorResponse")
-		m.jsonParser.jsonFilePath = "pkg:/source/json/usersConfig.json"
 		m.jsonParser.data = data
 		m.jsonParser.control = "RUN"
 	end if
@@ -49,15 +64,22 @@ sub onSuccessResponse(msg as dynamic)
 	data = msg.getData()
 	destroyTask()
 
+	print "<--------------- SIGN IN/UP SUCCESSFUL --------------->"
 	if data <> invalid
-		m.router.navigateToScene("ConsentScene", data)
+		m.router.navigateToScene("ConsentScene", data.userConfig, true)
 	end if
+end sub
+
+sub onConsentsUpdated(msg as dynamic)
+	data = msg.getData()
+	destroyTask()
+	print "<--------------- CONSENTS UPDATED --------------->"
 end sub
 
 sub onErrorResponse(msg as dynamic)
 	data = msg.getData()
 	destroyTask()
-	stop
+	print "<--------------- ERROR --------------->"
 end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean

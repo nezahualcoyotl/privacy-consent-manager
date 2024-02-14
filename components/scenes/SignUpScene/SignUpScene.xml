@@ -25,6 +25,6 @@
       <StaticButton id="saveStateButton"/>
     </Group>
 
-    <Keyboard id="keyboard" backgroundColor="#22252C"/>
+    <Keyboard id="keyboard" />
   </children>
 </component>
