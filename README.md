@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="https://i.ibb.co/Zxb7pt1/logo.png" alt="Privacy Content Manager Logo">
+  <img src="https://i.ibb.co/Zxb7pt1/logo.png" alt="Privacy Consent Manager Logo">
 </p>
 
-# Privacy Content Manager
+# Privacy Consent Manager
 
 This is an app to manage privacy configurations for users.
 
 ## Purpose
 
-The primary goal of the Privacy Content Manager is to read and write on a json file to read and write users configurations
+The primary goal of the Privacy Consent Manager is to read and write on a json file to read and write users configurations
 
 ## Important Notes
 
-- The JSON file used for storing user configurations is temporary (because of how WriteAsciiFile works). It will be removed if the application is minimized since Instant Resume is not implemented. Therefore, user configurations and data will not persist between sessions.
+- The JSON file used for storing user configurations is temporary. It will be removed if the application is minimized since Instant Resume is not implemented. Therefore, user configurations and data will not persist between sessions.
 
 ## Known Issues and TODOs
 
