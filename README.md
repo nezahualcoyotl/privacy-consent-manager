@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.ibb.co/Zxb7pt1/logo.png" alt="Privacy Content Manager Logo">
+</p>
+
 # Privacy Content Manager
 
 This is an app to manage privacy configurations for users.
