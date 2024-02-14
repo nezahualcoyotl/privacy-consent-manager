@@ -9,68 +9,68 @@ sub onFocusedChild(msg as dynamic)
   m.top.selected = false
 
   if focusedChild <> invalid
-      setButtonFocus()
+    setButtonFocus()
   else
-      removeButtonFocus()
+    removeButtonFocus()
   end if
 end sub
 
 sub setupButton(event as object)
   m.buttonData = event.getData()
   if type(m.buttonData) = "roAssociativeArray" and m.buttonData.Count() > 0
-      m.label.setFields({
-          color: m.buttonData.unfocusedTextColor,
-          font: m.buttonData.font,
-          horizAlign: "center",
-          vertAlign: "center",
-          text: m.buttonData.text,
-          width: m.buttonData.width,
-          height: m.buttonData.height
-      })
+    m.label.setFields({
+      color: m.buttonData.unfocusedTextColor,
+      font: m.buttonData.font,
+      horizAlign: "center",
+      vertAlign: "center",
+      text: m.buttonData.text,
+      width: m.buttonData.width,
+      height: m.buttonData.height
+    })
 
-      m.background.setFields({
-          width: m.buttonData.width,
-          height: m.buttonData.height,
-          uri: m.buttonData.backgroundUri,
-          visible: true,
-          blendColor: m.buttonData.unfocusedColor
-      })
+    m.background.setFields({
+      width: m.buttonData.width,
+      height: m.buttonData.height,
+      uri: m.buttonData.backgroundUri,
+      visible: true,
+      blendColor: m.buttonData.unfocusedColor
+    })
   end if
 end sub
 
 sub setButtonText(text as string)
   if text <> invalid and text <> ""
-      m.label.font = m.buttonData.font
-      m.label.text = text
-      m.top.text = m.label.text
+    m.label.font = m.buttonData.font
+    m.label.text = text
+    m.top.text = m.label.text
   end if
 end sub
 
 sub setButtonFocus()
   m.label.setFields({
-      color: m.buttonData.focusedTextColor
+    color: m.buttonData.focusedTextColor
   })
   m.background.setFields({
-      blendColor: m.buttonData.focusedColor,
-      visible: true
+    blendColor: m.buttonData.focusedColor,
+    visible: true
   })
 end sub
 
 sub removeButtonFocus()
   m.label.setFields({
-      color: m.buttonData.unfocusedTextColor
+    color: m.buttonData.unfocusedTextColor
   })
   m.background.setFields({
-      blendColor: m.buttonData.unfocusedColor,
-      visible: true
+    blendColor: m.buttonData.unfocusedColor,
+    visible: true
   })
 end sub
 
-function onKeyEvent(key as string, press as boolean) as Boolean
+function onKeyEvent(key as string, press as boolean) as boolean
   handled = false
   if press and key = "OK" and m.top.isInFocusChain()
-      m.top.selected = true
-      handled = true
+    m.top.selected = true
+    handled = true
   end if
 
   return handled

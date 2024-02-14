@@ -27,26 +27,26 @@ end sub
 
 sub onFocusedChild(msg as dynamic)
   if m.top.isInFocusChain() and m.lastFocused <> invalid
-      m.lastFocused.setFocus(true)
+    m.lastFocused.setFocus(true)
   end if
 end sub
 
-function onKeyEvent(key as string, press as boolean) as Boolean
+function onKeyEvent(key as string, press as boolean) as boolean
   handled = false
   if press
-      if key = "up"
-          if m.signUpButton.isInFocusChain()
-              m.lastFocused = m.signInButton
-              m.signInButton.setFocus(true)
-              handled = true
-          end if
-      else if key = "down"
-          if m.signInButton.isInFocusChain()
-              m.lastFocused = m.signUpButton
-              m.signUpButton.setFocus(true)
-              handled = true
-          end if
+    if key = "up"
+      if m.signUpButton.isInFocusChain()
+        m.lastFocused = m.signInButton
+        m.signInButton.setFocus(true)
+        handled = true
       end if
+    else if key = "down"
+      if m.signInButton.isInFocusChain()
+        m.lastFocused = m.signUpButton
+        m.signUpButton.setFocus(true)
+        handled = true
+      end if
+    end if
   end if
   return handled
 end function
@@ -55,11 +55,13 @@ sub onButtonSelected(msg as dynamic)
   selectedButton = msg.getNode()
   eventType = ""
 
-  if selectedButton = "signUpButton"
+  if selectedButton = "signInButton"
+    eventType = "SIGN_IN_BUTTON_SELECTED"
+  else if selectedButton = "signUpButton"
     eventType = "SIGN_UP_BUTTON_SELECTED"
   end if
 
   m.top.event = {
-      type: eventType
+    type: eventType
   }
 end sub

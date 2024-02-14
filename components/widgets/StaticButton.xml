@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="StaticButton" extends="Group">
-    <script type="text/brightscript" uri="StaticButton.brs" />
+  <script type="text/brightscript" uri="StaticButton.brs" />
 
-    <interface>
-        <field id="buttonData" type="assocarray" onChange="setupButton" alwaysNotify="true" />
-        <field id="text" type="string" />
-        <field id="selected" type="boolean" />
-        <function name="setButtonText" />
-    </interface>
+  <interface>
+    <field id="buttonData" type="assocarray" onChange="setupButton" alwaysNotify="true" />
+    <field id="text" type="string" />
+    <field id="selected" type="boolean" />
+    <function name="setButtonText" />
+  </interface>
 
-    <children>
-        <Poster id="background" >
-            <Label id="label" />
-        </Poster>
-    </children>
+  <children>
+    <Poster id="background" >
+      <Label id="label" />
+    </Poster>
+  </children>
 </component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SignInScene" extends="BaseScene">
+  <script type="text/brightscript" uri="SignInScene.brs"/>
+  <children>
+    <LayoutGroup id="container" >
+      <Label id="title" />
+      <Label id="emailLabel" />
+      <TextEditBox id="email" />
+      <Label id="passwordLabel" />
+      <TextEditBox id="password" />
+      <LayoutGroup id="buttonGroup">
+        <StaticButton id="confirmButton"/>
+        <StaticButton id="cancelButton"/>
+      </LayoutGroup>
+    </LayoutGroup>
+    <Keyboard id="keyboard" />
+  </children>
+</component>

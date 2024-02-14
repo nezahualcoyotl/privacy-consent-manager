@@ -3,7 +3,6 @@ sub main(args as dynamic)
   m.port = createObject("roMessagePort")
   m.screen.setMessagePort(m.port)
   m.scene = m.screen.CreateScene("MainScene")
-  m.scene.observeField("event", m.port)
   m.screen.show()
 
   while true
