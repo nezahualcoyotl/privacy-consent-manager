@@ -271,7 +271,7 @@ function getConsentSceneStyles() as object
       font: "font:LargeBoldSystemFont",
       horizAlign: "center",
       vertAlign: "center",
-      text: "Privacy & Consents"
+      text: "Privacy Consent Configuration"
     },
     saveButton: {
       backgroundUri: "pkg:/images/roundedRect.9.png",

@@ -34,7 +34,7 @@ sub setStyles()
   m.cancelButton.setFields(styles.cancelButton)
   m.confirmButton.buttonData = styles.confirmButton
   m.cancelButton.buttonData = styles.cancelButton
-  m.confirmButton.callfunc("setButtonText", "Confirm")
+  m.confirmButton.callfunc("setButtonText", "Sign in")
   m.cancelButton.callfunc("setButtonText", "Cancel")
 
   m.lastFocused = m.email

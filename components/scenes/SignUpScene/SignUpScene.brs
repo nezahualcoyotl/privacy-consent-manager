@@ -57,7 +57,7 @@ sub setStyles()
   m.cancelButton.buttonData = styles.cancelButton
   m.saveStateButton.buttonData = styles.saveStateButton
 
-  m.saveButton.callfunc("setButtonText", "Save")
+  m.saveButton.callfunc("setButtonText", "Sign up")
   m.cancelButton.callfunc("setButtonText", "Cancel")
   m.saveStateButton.callfunc("setButtonText", "Save")
 
@@ -68,7 +68,7 @@ end sub
 sub onItemSelected(msg as dynamic)
   m.selectedIndex = msg.getData()
   stateSelected = m.statesList.content.getChild(m.selectedIndex)
-  m.selectedStateLabel.text = Substitute("{0}  /  [ {1} ]", stateSelected.title, stateSelected.id)
+  m.selectedStateLabel.text = Substitute("{0}", stateSelected.title, stateSelected.id)
 end sub
 
 sub getStateContent()
@@ -104,8 +104,8 @@ sub setStatesContent(data as object)
     m.selectedIndex = 0
     m.statesList.content = content
     defaultState = content.getChild(0)
-    m.stateLabel.text = Substitute("{0}  /  [ {1} ]", defaultState.title, defaultState.id)
-    m.selectedStateLabel.text = Substitute("{0}  /  [ {1} ]", defaultState.title, defaultState.id)
+    m.stateLabel.text = Substitute("{0}", defaultState.title, defaultState.id)
+    m.selectedStateLabel.text = Substitute("{0}", defaultState.title, defaultState.id)
   end if
 end sub
 
@@ -240,7 +240,7 @@ sub onButtonSelected(msg as dynamic)
       }
     else if selectedButton = "saveStateButton"
       stateSelected = m.statesList.content.getChild(m.selectedIndex)
-      m.stateLabel.text = Substitute("{0}  /  [ {1} ]", stateSelected.title, stateSelected.id)
+      m.stateLabel.text = Substitute("{0}", stateSelected.title, stateSelected.id)
 
       m.container.visible = true
       m.statesContainer.visible = false
