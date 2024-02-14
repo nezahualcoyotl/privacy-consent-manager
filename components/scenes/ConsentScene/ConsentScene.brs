@@ -62,7 +62,7 @@ sub initDataChanged(msg as dynamic)
   end if
 
   if m.configEnforced
-    m.message.text = "This settings are enforced by the state laws of " + locationData.name + "."
+    m.message.text = "This settings are enforced by " + locationData.name + " state regulations."
   end if
 end sub
 
